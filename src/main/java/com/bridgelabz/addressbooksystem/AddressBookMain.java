@@ -22,7 +22,10 @@ public class AddressBookMain {
             System.out.println("9. Reading");
             System.out.println("10. CSV Write");
             System.out.println("11. CSV Read");
-            System.out.println("12. Exit");
+            System.out.println("12. JSON Write");
+            System.out.println("13. JSON Read");
+            System.out.println("14. Retrieve data from database");
+            System.out.println("15. Exit");
             System.out.println("Enter your choice: ");
             int option = scanner.nextInt();
             switch (option){
@@ -109,7 +112,20 @@ public class AddressBookMain {
                     System.out.println(addressBookCSVr.read());
                     break;
                 case 12:
+                    AddressBookJson addressBook = new AddressBookJson();
+                    addressBook.write(addressBookMap);
                     break;
+                case 13:
+                    AddressBookJson addressBookJson = new AddressBookJson();
+                    System.out.println(addressBookJson.read());
+                    break;
+                case 14:
+                    addressBookMainObj.readDatabaseData();
+                    break;
+                case 15:
+                    addressBookMainObj.readDatabaseData();
+                    break;
+
                 default:
                     System.out.println("Invalid Option");
                     break;
