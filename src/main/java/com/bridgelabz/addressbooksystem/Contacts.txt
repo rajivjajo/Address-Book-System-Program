@@ -1,0 +1,2 @@
+1: Contacts{FirstName='e', LastName='w', Address='r', City='g', State='t', Zip='h', phoneNumber='v', email='u'} Contacts{FirstName='t', LastName='v', Address='r', City='j', State='d', Zip='r', phoneNumber='g', email='k'}
+2: Contacts{FirstName='e', LastName='w', Address='r', City='g', State='t', Zip='h', phoneNumber='v', email='u'} Contacts{FirstName='t', LastName='v', Address='r', City='j', State='d', Zip='r', phoneNumber='g', email='k'}
