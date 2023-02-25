@@ -26,6 +26,7 @@ public class AddressBookMain {
             System.out.println("13. JSON Read");
             System.out.println("14. Retrieve data from database");
             System.out.println("15. Update Contact");
+            System.out.println("16. Contacts between the dates");
             System.out.println("16. Exit");
             System.out.println("Enter your choice: ");
             int option = scanner.nextInt();
@@ -126,7 +127,11 @@ public class AddressBookMain {
                 case 15:
                     addressBookMainObj.updateContact();
                     break;
-
+                case 16:
+                    addressBookMainObj.contactsInBetweenDates();
+                    break;
+                case 17:
+                    break;
                 default:
                     System.out.println("Invalid Option");
                     break;

@@ -331,10 +331,24 @@ public class AddressBook {
                 int count = statement.getUpdateCount();
                 System.out.println(count);
             }
-            return response;
     } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
+    public void contactsInBetweenDates() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Address_Book WHERE date_added between cast('2005-12-11' as date) and cast('2020-12-06' as date)");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
