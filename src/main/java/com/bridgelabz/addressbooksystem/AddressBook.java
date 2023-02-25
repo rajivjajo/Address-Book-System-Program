@@ -316,4 +316,25 @@ public class AddressBook {
             throw new RuntimeException(e);
         }
     }
-}
+
+    public void updateContact() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
+            PreparedStatement statement = connection.prepareStatement("UPDATE AddressBook SET PHONENUMBER = '0000000000' WHERE FIRSTNAME = PRASANTH;");
+            boolean response = statement.execute();
+            if (response) {
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next())
+                    System.out.println(resultSet.getInt(1));
+            } else {
+                int count = statement.getUpdateCount();
+                System.out.println(count);
+            }
+            return response;
+    } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }

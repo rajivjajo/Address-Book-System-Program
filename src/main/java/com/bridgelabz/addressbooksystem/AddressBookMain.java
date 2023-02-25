@@ -25,7 +25,8 @@ public class AddressBookMain {
             System.out.println("12. JSON Write");
             System.out.println("13. JSON Read");
             System.out.println("14. Retrieve data from database");
-            System.out.println("15. Exit");
+            System.out.println("15. Update Contact");
+            System.out.println("16. Exit");
             System.out.println("Enter your choice: ");
             int option = scanner.nextInt();
             switch (option){
@@ -123,7 +124,7 @@ public class AddressBookMain {
                     addressBookMainObj.readDatabaseData();
                     break;
                 case 15:
-                    addressBookMainObj.readDatabaseData();
+                    addressBookMainObj.updateContact();
                     break;
 
                 default:
