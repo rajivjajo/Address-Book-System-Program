@@ -27,7 +27,9 @@ public class AddressBookMain {
             System.out.println("14. Retrieve data from database");
             System.out.println("15. Update Contact");
             System.out.println("16. Contacts between the dates");
-            System.out.println("16. Exit");
+            System.out.println("17. Count by city or state");
+            System.out.println("18. Add Contact");
+            System.out.println("19. Exit");
             System.out.println("Enter your choice: ");
             int option = scanner.nextInt();
             switch (option){
@@ -132,6 +134,9 @@ public class AddressBookMain {
                     break;
                 case 17:
                     addressBookMainObj.countByCityOrState();
+                    break;
+                case 18:
+                    addressBookMainObj.addContacts();
                     break;
                 default:
                     System.out.println("Invalid Option");

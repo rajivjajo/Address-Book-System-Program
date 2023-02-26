@@ -390,6 +390,28 @@ public class AddressBook {
                     e.printStackTrace();
                 }
                 break;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
+    }
+
+    public void addContacts() throws Exception {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO AddressBook(FIRSTNAME,LASTNAME,ADDRESS,CITY,STATE,ZIP,PHONENUMBER,EMAIL,BOOKNAME,BOOKTYPE) VALUES ('John', 'Doe', '123 Main St', 'Anytown', 'CA', '12345', '5555551234', 'john.doe@example.com', 'Friend', 'Friend')");
+            boolean response = statement.execute();
+            if (response) {
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next())
+                    System.out.println(resultSet.getInt(1));
+            } else {
+                int count = statement.getUpdateCount();
+                System.out.println(count);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 }
