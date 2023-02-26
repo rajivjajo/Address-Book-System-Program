@@ -343,12 +343,53 @@ public class AddressBook {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Address_Book WHERE date_added between cast('2005-12-11' as date) and cast('2020-12-06' as date)");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString(1) + " : " + rs.getString(2) + " : " + rs.getString(3) + " : " +rs.getString(4) + " : " +rs.getString(5) + " : " +rs.getString(6) + " : " +rs.getString(7) + " : " +rs.getString(8) + " : " +rs.getString(9) + " : " +rs.getString(10));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void countByCityOrState() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. Count By City");
+        System.out.println("2 Count By State");
+        System.out.println("Choose option");
+        int number = scanner.nextInt();
+        switch(number){
+            case 1:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT CITY, count(*) AS count FROM AddressBook GROUP BY CITY");
+                    ResultSet rs = preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        String city = rs.getString("CITY");
+                        double countContacts = rs.getInt("count");
+                        System.out.println(city + " Total Contacts: " + countContacts);
+                    }
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case 2:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Address_Book", "root", "d11cpk1211");
+                    PreparedStatement preparedStatement = connection.prepareStatement("SELECT STATE, count(*) AS count FROM AddressBook GROUP BY STATE");
+                    ResultSet rs = preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        String city = rs.getString("STATE");
+                        double countContacts = rs.getInt("count");
+                        System.out.println(city + " Total States: " + countContacts);
+                    }
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 }

@@ -131,6 +131,7 @@ public class AddressBookMain {
                     addressBookMainObj.contactsInBetweenDates();
                     break;
                 case 17:
+                    addressBookMainObj.countByCityOrState();
                     break;
                 default:
                     System.out.println("Invalid Option");
